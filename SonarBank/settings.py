@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 # import dj_database_url
 import environ
 env = environ.Env()
@@ -88,17 +89,22 @@ WSGI_APPLICATION = 'SonarBank.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': env("DB_NAME"),
-         'USER': env("DB_USER"),
-         'PASSWORD': env("DB_PASSWORD"),
-         'HOST': env("DB_HOST"),
-         'PORT': env("DB_PORT"),
-     }
- }
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#          'NAME': env("DB_NAME"),
+#          'USER': env("DB_USER"),
+#          'PASSWORD': env("DB_PASSWORD"),
+#          'HOST': env("DB_HOST"),
+#          'PORT': env("DB_PORT"),
+#      }
+#  }
 
+DATABASES = {
+    'default':dj_database_url.config(
+        default='postgres://sonar_bank_user:jzow5RqHsxxqzaq5OfOsX3mCytC6XgPY@dpg-cmfatden7f5s7384m6bg-a.oregon-postgres.render.com/sonar_bank',
+    )
+}
 
 
 # Password validation
