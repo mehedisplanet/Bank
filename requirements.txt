@@ -80,4 +80,3 @@ tzdata
 urllib3
 virtualenv
 Werkzeug
-wikipedia
